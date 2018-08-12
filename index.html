@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #canvas {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  <script src="./jtopo-0.4.8-min.js"></script>
+  <script src="./Topo.js"></script>
+  <script src="./data.js"></script>
+</head>
+
+<body>
+  <!-- <canvas id="canvas"></canvas> -->
+  <div style="width: 100vw; height: 100vh;">
+    <canvas id="canvas" style=" background-color:#EEEEEE;"></canvas>
+  </div>
+</body>
+<script>
+  const topo = new SimpleTopo({
+    el: 'canvas',
+    background: '/image/timg.jpeg'
+  })
+
+  topo.draw(data)
+</script>
+
+</html>

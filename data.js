@@ -1,0 +1,36 @@
+const data = {
+  nodes: [
+    { id: 1, x: 305, y: 43, img: 'VOLVO.gif' },
+    { id: 2, x: 365, y: 43, img: 'VOLVO.gif', alarm: '2 W' },
+    { id: 3, x: 425, y: 43, img: 'VOLVO.gif' },
+    { id: 4, x: 365, y: 125, img: '雷诺.gif' },
+    { id: 5, x: 324, y: 167, img: '标志.gif' },
+    { id: 6, x: 364, y: 214, img: '阿尔法罗密欧.gif' },
+    { id: 7, x: 344, y: 259, img: 'LINCOLN.gif' },
+    { id: 8, x: 364, y: 328, img: '阿尔法罗密欧.gif' },
+    { id: 9, x: 324, y: 377, img: '福特.bmp' },
+    { id: 10, x: 366, y: 411, img: '雷诺.gif' },
+    { id: 11, x: 218, y: 520, img: '本田.gif', type: 'flex', alarm: '' },
+    { id: 12, x: 292, y: 520, img: '本田.gif', type: 'flex' },
+    { id: 13, x: 366, y: 520, img: '本田.gif', type: 'flex', alarm: '二级告警' },
+    { id: 14, x: 447, y: 520, img: '本田.gif', type: 'flex' },
+    { id: 15, x: 515, y: 520, img: '本田.gif', type: 'flex', alarm: '1 M' },
+
+  ],
+  links: [
+    { id: 1, sId: 1, eId: 4, type: 'fold' },
+    { id: 2, sId: 2, eId: 4, type: 'fold' },
+    { id: 3, sId: 3, eId: 4, type: 'fold' },
+    { id: 4, sId: 4, eId: 5 },
+    { id: 5, sId: 5, eId: 6 },
+    { id: 6, sId: 6, eId: 7 },
+    { id: 7, sId: 7, eId: 8 },
+    { id: 8, sId: 8, eId: 9 },
+    { id: 9, sId: 9, eId: 10 },
+    { id: 11, sId: 10, eId: 11, type: 'flex' },
+    { id: 12, sId: 10, eId: 12, type: 'flex' },
+    { id: 13, sId: 10, eId: 13, type: 'flex' },
+    { id: 14, sId: 10, eId: 14, type: 'flex' },
+    { id: 15, sId: 10, eId: 15, type: 'flex' },
+  ]
+}
