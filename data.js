@@ -8,13 +8,13 @@ const data = {
     { id: 6, x: 364, y: 214, img: '阿尔法罗密欧.gif' },
     { id: 7, x: 344, y: 259, img: 'LINCOLN.gif' },
     { id: 8, x: 364, y: 328, img: '阿尔法罗密欧.gif' },
-    { id: 9, x: 324, y: 377, img: '福特.bmp' },
+    { id: 9, x: 324, y: 377, img: '福特.bmp', width: 20, height: 20 },
     { id: 10, x: 366, y: 411, img: '雷诺.gif' },
     { id: 11, x: 218, y: 520, img: '本田.gif', type: 'flex', alarm: '' },
     { id: 12, x: 292, y: 520, img: '本田.gif', type: 'flex' },
     { id: 13, x: 366, y: 520, img: '本田.gif', type: 'flex', alarm: '二级告警' },
     { id: 14, x: 447, y: 520, img: '本田.gif', type: 'flex' },
-    { id: 15, x: 515, y: 520, img: '本田.gif', type: 'flex', alarm: '1 M' },
+    { id: 15, x: 515, y: 520, img: '本田.gif', type: 'flex', alarm: '1 M', width: 100, height: 100, tips: '11111111' },
 
   ],
   links: [
@@ -31,6 +31,6 @@ const data = {
     { id: 12, sId: 10, eId: 12, type: 'flex' },
     { id: 13, sId: 10, eId: 13, type: 'flex' },
     { id: 14, sId: 10, eId: 14, type: 'flex' },
-    { id: 15, sId: 10, eId: 15, type: 'flex' },
+    { id: 15, sId: 10, eId: 15, type: 'flex', tips: '222' },
   ]
 }

@@ -35,13 +35,13 @@ class SimpleTopo {
     this.scene.centerAndZoom(1, 1, stage)
   }
 
-  createNode({ x, y, img, id, alarm }) {
+  createNode({ x, y, img, id, alarm, width, height }) {
     var node = new JTopo.Node();
     // 路径需要修改
-    node.setImage('/image/' + img, true);
-    node.setLocation(x, y);
+    node.setImage('/image/' + img, !width);
     node.uuid = id
     node.alarm = alarm
+    width ? node.setBound(x, y, width, height) : node.setLocation(x, y)
     return node
   }
 
@@ -67,27 +67,15 @@ class SimpleTopo {
     return link
   }
 
-  createFlexLink(nodeA, nodeZ) {
-    var link = new JTopo.FlexionalLink(nodeA, nodeZ);
-
-    return link;
-  }
-
-  createElement(type, data) {
-
-  }
-
   resize() {
     let parat = this.canvas.parentElement
     canvas.width = parat.clientWidth
     canvas.height = parat.clientHeight
   }
 
-  on() {
-
+  on(name, callback) {
+    this.scene.addEventListener(name, callback)
   }
-
-
 
   draw({ nodes, links }) {
     const { scene, nodeMap, nodeList, linkMap, linkList } = this
@@ -96,6 +84,7 @@ class SimpleTopo {
       nodes.forEach(n => {
         const node = this.createNode(n)
         node.uuid = n.id
+        node.tips = n.tips
         nodeMap[n.id] = node
         nodeList.push(node)
         scene.add(node)
@@ -106,6 +95,7 @@ class SimpleTopo {
       links.forEach(l => {
         const link = this.createLink(nodeMap[l.sId], nodeMap[l.eId], l.type)
         link.uuid = l.id
+        link.tips = l.tips
         linkMap[l.id] = link
         linkList.push(link)
         scene.add(link)
@@ -114,11 +104,41 @@ class SimpleTopo {
   }
 
   clear() {
-
+    this.scene.clear()
   }
 
-  remove() {
+  removeNode(id) {
+    this._removeElement('node', id)
+  }
 
+  removeLink(id) {
+    this._removeElement('link', id)
+  }
+
+  _removeElement(type, id) {
+    let map, list, element
+    switch (type) {
+      case 'node':
+        map = this.nodeMap
+        list = this.nodeList
+        break;
+      case 'link':
+        map = this.linkMap
+        list = this.linkList
+        break
+      default:
+        return
+    }
+
+    element = map[id]
+
+    if (!element) {
+      return
+    }
+
+    this.scene.remove(element)
+    delete map[id]
+    removeFromArray(list, element)
   }
 
   bindEvent() {
@@ -126,7 +146,32 @@ class SimpleTopo {
     window.addEventListener('resize', function (params) {
       that.resize()
     })
+
+    let hoverTarget = null
+
+    this.on('mouseover', function (e) {
+      let target = e.target
+      console.log(target)
+      if (!target || !target.tips) {
+        return
+      }
+      hoverTarget = target
+      target.text = target.tips
+    })
+
+    this.on('mouseout', function (e) {
+      if (!hoverTarget) {
+        return
+      }
+      hoverTarget.text = undefined
+      hoverTarget = null
+    })
+
   }
+}
+
+function removeFromArray(arr, el) {
+  arr.splice(arr.indexOf(el), 1)
 }
 
 // export default SimpleTopo
